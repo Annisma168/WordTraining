@@ -4,15 +4,16 @@ namespace WordTraining
 {
     internal class Program
     {
-
+        //List variable for a dictionary
         private static List<(string foreign, string native)> dictionary = new();
+        //Main loop. Keeps running until the user decides to exit
         static void Main(string[] args)
         {
-            
             for (int i = 0; i >= 0; i++)
             {
                 Console.WriteLine("What do you want to do? \nWrite \"1\" for creating a new pair of words. \nWrite \"2\" for playing the remember game.\nWrite \"3\" to exit.");
                 string userInput = Console.ReadLine();
+                //Option 1: adding a new pair of words to the dictionary
                 if (userInput == "1")
                 { 
                     NewPair();
@@ -29,8 +30,8 @@ namespace WordTraining
 
                         else Console.WriteLine("\nAnswer is not recognised. Try again.\n"); 
                     }
-                
                 }
+                //Option 2: playing the game with words from the dictionary
                 else if (userInput == "2")
                 {
                     if (dictionary.Count == 0)
@@ -55,6 +56,7 @@ namespace WordTraining
                         }
                     }
                 }
+                //Option 3: exit
                 else if (userInput == "3")
                 {
                    Exit();
@@ -64,9 +66,11 @@ namespace WordTraining
             }
             
         }
+        
+        //Method for saving a new word pair in the dictionary
         static void NewPair()
         {
-            //input of words
+            //Total space for word pairs
             int totalWords = 100;
             
             for (int i = 0; i < totalWords; i++)
@@ -100,10 +104,10 @@ namespace WordTraining
             
             }
         }
+        
+        //Method for playing the "remember game" by asking the user to translate random words from the foreign list
         static void RememberWords()
         {
-            
-          
             Random random = new Random();
             for (int i = 0; i < dictionary.Count; i++)
             {
@@ -129,6 +133,8 @@ namespace WordTraining
             }
             
         }
+        
+        //Method to exit the program with a farewell message
         static void Exit()
         {
             Console.WriteLine($"Thank you for playing! Press any button to exit...");
